@@ -1,8 +1,8 @@
 ---
-- name: Hello World!
+- name: cat bashrc
   hosts: all
 
   tasks:
 
-  - name: Hello World!
+  - name: cat bashrc
     shell: cat /home/arominger/.bashrc
