@@ -1,8 +1,0 @@
----
-- name: list home
-  hosts: all
-
-  tasks:
-
-  - name: list home
-    shell: ls /home/user2/

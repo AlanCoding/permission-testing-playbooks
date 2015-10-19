@@ -1,8 +1,0 @@
----
-- name: cat bashrc
-  hosts: all
-
-  tasks:
-
-  - name: cat bashrc
-    shell: cat /home/arominger/.bashrc

@@ -1,0 +1,11 @@
+---
+- name: Create new user for testing
+  hosts: all
+
+  tasks:
+
+    - name: Creates user1 for testing
+      user: name=user1 password={{ 'password' | password_hash('sha512') }}
+
+    - name: Creates user2 for testing
+      user: name=user2 password={{ 'pass1' | password_hash('sha512') }}
