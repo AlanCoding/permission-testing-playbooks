@@ -1,0 +1,9 @@
+# some borrowed from http://stackoverflow.com/questions/21892603/how-to-make-ansible-execute-a-shell-script-if-a-package-is-not-installed
+# also 
+- name: Check if foo.rpm is installed
+  command: rpm -q foo.rpm
+  register: rpm_check
+
+- name: Execute script if foo.rpm is not installed
+  command: somescript
+  when: rpm_check.stdout.find('is not installed') != -1
