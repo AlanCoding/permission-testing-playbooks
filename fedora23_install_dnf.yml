@@ -1,12 +1,5 @@
-- hosts: f23
-  remote_user: fedora
+- hosts: all
   gather_facts: false
-  become_user: root
-  become: yes
   tasks:
     - name: install python and deps for ansible modules
       raw: dnf install -y python2 python2-dnf libselinux-python
-    - name: gather facts
-      setup:
-    - name: use facts
-      lineinfile: dest=/etc/some-cfg-file line="myip={{ ansible_eth0.ipv4.address }}" create=true
