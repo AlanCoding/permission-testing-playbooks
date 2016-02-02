@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  gather_facts: false
+  vars:
+    msg: 'Hello World! extra_vars: a={{ a }} b={{ b }} c={{ c }} d={{ d }}'
+  tasks:
+    - debug: var=msg
