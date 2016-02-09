@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  gather_facts: false
+  vars:
+    msg: 'Value received in extra_vars: {{ unique_name }}'
+  tasks:
+    - debug: var=msg
