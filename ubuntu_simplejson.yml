@@ -9,3 +9,4 @@
   - name: install python-simplejson
     raw: sudo apt-get -y update
     raw: sudo apt-get -y install python-simplejson
+    raw: sudo apt-get install python-apt
