@@ -9,4 +9,4 @@
   - name: install python-simplejson
     raw: sudo dnf -y update
     raw: sudo dnf -y install python-simplejson
-    # raw: sudo dnf install python-dnf
+    raw: sudo dnf -y install rpm-python
