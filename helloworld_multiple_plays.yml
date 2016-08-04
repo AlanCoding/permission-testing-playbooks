@@ -3,6 +3,8 @@
   tasks:
   - name: Check that the server's alive
     action: ping
+    - tags:
+      - tag1
 
 - name: Hello World
   hosts: all
@@ -10,9 +12,14 @@
   - name: Greet the world twice
     shell: echo "Hello World"
     with_sequence: count=2
+    - tags:
+      - tag1
+      - tag2
 
 - name: Close up
   hosts: all
   tasks:
   - name: Say goodbye
     shell: echo "Goodbye for now"
+    - tags:
+      - tag2
