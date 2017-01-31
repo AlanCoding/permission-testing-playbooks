@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  gather_facts: false
+  vars:
+    msg: 'debugging extra_vars: a={{ a }}'
+  tasks:
+    - local_action: copy content={{ a }} dest=/tmp/debug_file.txt
+    - debug: var=msg
