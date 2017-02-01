@@ -1,8 +1,9 @@
+# coding=utf-8
 ---
 
 - hosts: all
   gather_facts: false
   vars:
-    msg: 'hello world'
+    msg: 'これはユニコードデバッグメッセージです'
   tasks:
-    - debug: var=これはユニコードデバッグメッセージです
+    - debug: var=msg
