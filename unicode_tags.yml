@@ -1,0 +1,25 @@
+- name: Check for ping
+  hosts: all
+  tasks:
+  - name: Check that the server's alive
+    action: ping
+    tags:
+    - オ
+
+- name: Hello World
+  hosts: all
+  tasks:
+  - name: Greet the world twice
+    shell: echo "Hello World"
+    with_sequence: count=2
+    tags:
+    - オ
+    - レン
+
+- name: Close up
+  hosts: all
+  tasks:
+  - name: Say goodbye
+    shell: echo "Goodbye for now"
+    tags:
+    - レン
