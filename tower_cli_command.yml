@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: False
+  connection: local
+
+  tasks:
+    - name: list Tower users
+      local_action: command tower-cli user list --format json
+      register: user_list_out
+    - debug: var=user_list_out
