@@ -5,4 +5,4 @@
   tasks:
 
   - name: Hello World!
-    shell: echo "Hi!  AWX is working"
+    shell: echo "Hi!  AWX is working!"
