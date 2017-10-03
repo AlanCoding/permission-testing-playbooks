@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  gather_facts: false
+  vars:
+    msg: 'before inventory refresh'
+  tasks:
+    - debug: var=msg
+
+- name: Refresh inventory to ensure new instaces exist in inventory
+  meta: refresh_inventory
+
+- hosts: all
+  gather_facts: false
+  vars:
+    msg: 'after inventory refresh'
+  tasks:
+    - debug: var=msg
