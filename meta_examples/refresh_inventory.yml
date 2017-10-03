@@ -7,8 +7,15 @@
     msg2: 'after inventory refresh'
   tasks:
     - debug: var=msg1
-
+- hosts: all
+  gather_facts: false
+  tasks:
     - name: Refresh inventory to ensure new instaces exist in inventory
       meta: refresh_inventory
-
+- hosts: all
+  gather_facts: false
+  vars:
+    msg1: 'before inventory refresh'
+    msg2: 'after inventory refresh'
+  tasks:
     - debug: var=msg2
