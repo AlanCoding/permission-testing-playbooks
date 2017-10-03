@@ -3,16 +3,12 @@
 - hosts: all
   gather_facts: false
   vars:
-    msg: 'before inventory refresh'
+    msg1: 'before inventory refresh'
+    msg2: 'after inventory refresh'
   tasks:
-    - debug: var=msg
+    - debug: var=msg1
 
-- name: Refresh inventory to ensure new instaces exist in inventory
-  meta: refresh_inventory
+    - name: Refresh inventory to ensure new instaces exist in inventory
+      meta: refresh_inventory
 
-- hosts: all
-  gather_facts: false
-  vars:
-    msg: 'after inventory refresh'
-  tasks:
-    - debug: var=msg
+    - debug: var=msg2
