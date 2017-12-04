@@ -4,14 +4,10 @@
   gather_facts: false
   tasks:
     - name: echo a
-      debug: var={{ a }}
-      when: a is defined
+      debug: msg={{ a | default('undefined')}}
     - name: echo b
-      debug: var={{ b }}
-      when: b is defined
+      debug: msg={{ b | default('undefined') }}
     - name: echo c
-      debug: var={{ c }}
-      when: c is defined
+      debug: msg={{ c | default('undefined') }}
     - name: echo d
-      debug: var={{ d }}
-      when: d is defined
+      debug: msg={{ d | default('undefined') }}
