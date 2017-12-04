@@ -2,7 +2,16 @@
 
 - hosts: all
   gather_facts: false
-  vars:
-    msg: 'Hello World! extra_vars: a={{ a }} b={{ b }} c={{ c }} d={{ d }}'
   tasks:
-    - debug: var=msg
+    - name: echo a
+      debug: var={{ a }}
+      when: a is defined
+    - name: echo b
+      debug: var={{ b }}
+      when: b is defined
+    - name: echo c
+      debug: var={{ c }}
+      when: c is defined
+    - name: echo d
+      debug: var={{ d }}
+      when: d is defined
