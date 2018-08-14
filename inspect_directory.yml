@@ -1,0 +1,16 @@
+- name: Inspect elements of directory being ran inside of
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - shell: ls -p | grep -v /
+      run_once: true
+      register: list_cmd
+
+    - name: print filenames of all files
+      debug: var=item
+      with_items: "{{ list_cmd.stdout_lines }}"
+
+    - name: print contents of all files
+      debug: msg="{{ item }}"
+      with_file: "{{ list_cmd.stdout_lines }}"
