@@ -17,21 +17,21 @@
     - name: print private directory
       debug: msg="{{ tower_dir }} the private directory"
 
-    - shell: ls -p {{ tower_dir }} | grep -v /
+    - shell: ls -p {{ tower_dir }}/tmp*
       run_once: true
       register: list_cmd
 
-    - name: intermediate calculation
-      set_fact:
-        interim_string: "{% for item in list_cmd.stdout_lines %}{{ tower_dir }}/{{item}} {% endfor %}"
-
-    - name: make all paths absolute
-      set_fact:
-        file_names: "{{ interim_string.split() }}"
+    # - name: intermediate calculation
+    #   set_fact:
+    #     interim_string: "{% for item in list_cmd.stdout_lines %}{{ tower_dir }}/{{item}} {% endfor %}"
+    # 
+    # - name: make all paths absolute
+    #   set_fact:
+    #     file_names: "{{ interim_string.split() }}"
 
     - name: print filenames of all files
-      debug: msg="{{ file_names }}"
+      debug: msg="{{ list_cmd.stdout_lines }}"
 
     - name: print contents of all files
       debug: msg="{{ item }}"
-      with_file: "{{ file_names }}"
+      with_file: "{{ list_cmd.stdout_lines }}"
