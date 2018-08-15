@@ -1,0 +1,37 @@
+- name: Inspect elements of directory being ran inside of
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - shell: pwd
+      run_once: true
+      register: pwd_cmd
+
+    - name: print current directory
+      run_once: true
+      debug: msg="{{ pwd_cmd.stdout_lines[0] }}"
+
+    - set_fact:
+        tower_dir: "{{ lookup('env','AWX_PRIVATE_DATA_DIR') }}"
+
+    - name: print private directory
+      debug: msg="{{ tower_dir }} the private directory"
+
+    - shell: ls -p {{ tower_dir }} | grep -v /
+      run_once: true
+      register: list_cmd
+
+    - name: intermediate calculation
+      set_fact:
+        interim_string: "{% for item in list_cmd.stdout_lines %}{{ tower_dir }}/{{item}} {% endfor %}"
+
+    - name: make all paths absolute
+      set_fact:
+        file_names: "{{ interim_string.split() }}"
+
+    - name: print filenames of all files
+      debug: msg="{{ file_names }}"
+
+    - name: print contents of all files
+      debug: msg="{{ item }}"
+      with_file: "{{ file_names }}"

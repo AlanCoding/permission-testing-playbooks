@@ -3,6 +3,14 @@
   hosts: all
   gather_facts: no
   tasks:
+    - shell: pwd
+      run_once: true
+      register: pwd_cmd
+
+    - name: print current directory
+      run_once: true
+      debug: msg="{{ pwd_cmd.stdout_lines[0] }}"
+
     - shell: ls -p | grep -v /
       run_once: true
       register: list_cmd
