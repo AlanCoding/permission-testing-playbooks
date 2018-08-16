@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    foo: "[{% for number in range(1000) %}'But I would walk 500 miles And I would walk 500 more Just to be the man who walks a thousand miles To fall down at your door', {% endfor %}]"
+  tasks:
+  - set_stats:
+      data:
+        mai_list: "{{ foo }}"
