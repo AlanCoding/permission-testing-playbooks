@@ -3,7 +3,9 @@
   connection: local
   # Use like
   # ansible-playbook -i localhost, large_stats.yml -e "{count: 9}"
+  vars:
+    novel: This text has 100 characters in it foooooooooOO This text has 100 characters in it foooooooooOO asdf
   tasks:
   - set_stats:
       data:
-        mai_list: "[{% for number in range(count) %}'foooooooooooooooooo', {% endfor %}]"
+        mai_list: "[{% for number in range(count) %}novel*100, {% endfor %}]"
