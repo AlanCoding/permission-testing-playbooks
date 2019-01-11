@@ -1,0 +1,23 @@
+- name: Inspect elements of directory being ran inside of
+  connection: local
+  hosts: all
+  gather_facts: no
+  vars:
+    dir_reference: PWD
+  tasks:
+    - name: Save pwd
+      set_fact:
+        job_pwd: "{{ lookup('env', dir_reference) }}"
+
+    - name: Get the full env with everything
+      full_env:
+        dir: "{{playbook_dir}}"
+      register: full_env_cmd
+
+    - name: Save data to playbook stats
+      set_stats:
+        data:
+          playbook_dir: "{{playbook_dir}}"
+          job_cwd: "{{job_pwd}}"
+          job_env: "{{full_env_cmd.full_env}}"
+          job_files: "{{full_env_cmd.full_files}}"
