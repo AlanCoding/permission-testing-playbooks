@@ -11,7 +11,7 @@
 
     - name: Get the full env with everything
       full_env:
-        dir: "{{playbook_dir}}"
+        dir: "{{job_pwd}}"
       register: full_env_cmd
 
     - name: Save data to playbook stats
